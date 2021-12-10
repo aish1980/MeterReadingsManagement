@@ -1,0 +1,41 @@
+﻿@model MeterReadingsManagement.Models.MeterReading
+
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Deleting Meter Reading</h2>
+
+
+<div class="container p-3 my-3 border">
+    <h4>Would you like to continue?</h4>
+    <hr />
+    <dl class="row">
+        <dd class="col-sm-3">
+            Account Id :
+        </dd>
+        <dd class="col-sm-9">
+            @Model.AccountId
+        </dd>
+        <dd class="col-sm-3">
+            Meter Reading Date Time :
+        </dd>
+        <dd class="col-sm-9">
+            @Model.MeterReadingDateTime
+        </dd>
+        <dd class="col-sm-3">
+            Meter Read Value : 
+        </dd>
+        <dd class="col-sm-9">
+            @Model.MeterReadValue
+        </dd>
+    </dl>
+
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <input class="btn btn-primary" type="submit" value="Yes" />
+        <a class="btn btn-danger" asp-action="Index">No</a>
+    </form>
+
+</div>

@@ -1,0 +1,44 @@
+﻿@model MeterReadingsManagement.ViewModels.MeterReadingsUploadViewModel
+
+@{
+    ViewData["Title"] = "Upload";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container p-3 my-3 border">
+    <h5>Load Meter Reading Details</h5>
+
+  
+
+    <form method="post" enctype="multipart/form-data" asp-action="Upload">
+       
+        <div class="form-group">
+            <label asp-for="CSVFile" class="col-sm-2 col-form-label"></label>
+            <div class="col-sm-6">
+                <div class="custom-file">
+                    <input asp-for="CSVFile" class="form-control custom-file-input">
+                    <label class="custom-file-label">Choose File...</label>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-6">
+                <input class="btn btn-outline-primary" type="submit" value="Upload" />
+                <a class="btn btn-danger" asp-action="Index">Back</a>
+                <a class="btn btn-outline-primary" asp-action="Index">View Meter Readings</a>
+            </div>
+            <label>@ViewBag.Message</label>
+        </div>
+        @section Scripts {
+            <script>
+                $(document).ready(function () {
+                    $('.custom-file-input').on("change", function () {
+                        var fileName = $(this).val().split("\\").pop();
+                        $(this).next('.custom-file-label').html(fileName);
+                    });
+                });
+            </script>
+        }
+    </form>
+    </div>
+
